@@ -1,0 +1,32 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="container mx-auto">
+      {% if request.user.is_authenticated %}
+        <div class="card mt-5">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="https://img.freepik.com/free-vector/addicted-boy-playing-video-games_52683-37361.jpg?w=740&t=st=1661017481~exp=1661018081~hmac=9515038a8a6849d32854e56170d5f47f181f861e31856f24941bcfa5a4407fb9" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">Logged in as <strong><span class"text-danger">{{request.user}}</span></strong></h5>
+
+                <a href="{% url 'logout' %}" class="btn btn-primary">Log out</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="card mt-5">
+          <div class="card-header">
+            Access Denied
+          </div>
+          <div class="card-body">
+            {% comment %} <h5 class="card-title">Currently not logged in</h5> {% endcomment %}
+            <p class="card-text"> <a href="{% url 'login' %}" class="text-decoration-none">Log in</a> in order to access this page. If no account yet, <a href="{% url 'register' %}" class="text-decoration-none">register</a>  here.</p>
+          </div>
+        </div>
+
+      {% endif %}
+    </div>
+{% endblock %}

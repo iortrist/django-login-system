@@ -1,0 +1,40 @@
+{% extends 'base/main.html' %}
+{% block content %}
+    <div class="container mx-auto">
+      {% if request.user.is_authenticated %}
+        <div class="card mt-5">
+          <div class="card-body">
+            <p class="card-text text-center">You're not allowed here! Go back <a href="{% url 'home' %}" class="text-decoration-none">home</a> </p>
+          </div>
+        </div>
+      {% else %}
+        <div class="card mt-5">
+          <div class="card-header">
+            <h5 class="card-title text-center">Log in</h5>
+          </div>
+          <div class="card-body">
+            {% for message in messages %}
+            <p class="card-text text-center text-{{message.tags}}">            
+              {{ message }}
+            </p>
+            {% endfor %}
+            <form action="" method="post">
+              {% csrf_token %}
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
+                <label for="username">Username</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                <label for="password">Password</label>
+              </div>
+              <input type="submit" class="btn btn-primary" value="Login">
+            </form>
+          </div>
+          <div class="card-body mb-3">
+            <p class="card-text text-center">No account yet? <a href="{% url 'register' %}" class="text-decoration-none">Register</a></p>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+{% endblock %}
