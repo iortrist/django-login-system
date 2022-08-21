@@ -1,5 +1,5 @@
 # Django Login System
-A basic login system with welcome message sent via email for every successful registration
+Basic login system
 
 ## Functionality
 - User registration
