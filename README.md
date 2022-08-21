@@ -5,8 +5,8 @@ Basic login system
 - User registration
     - Checks if username already exists
     - Checks if username is less than 4 characters
-    - Checks if username is alpha-numeric
-    - Checks if password and password confirmatation matches
+    - Checks if username is not alpha-numeric
+    - Checks if password and password confirmatation matched
     - Checks if password is less than 8 characters
     - Checks if email already exists
     - Welcome message is sent via email for every succcessful registration
